@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #a8c0ff, #fbc2eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .login-container {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 360px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 28px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            margin: 20px 0;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .quote {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .quote span {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Enter "I Love You"</h2>
+        <form id="loginForm">
+            <input type="text" id="password" placeholder="Type here" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="quote">
+            <p>For my lovely pencil: <span>"Susmitha, your kindness and devotion light up every room you enter. I’m
+                    grateful for your friendship and the joy you bring into my life."</span></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+            var input = document.getElementById('password').value.trim();
+            console.log("Input value:", input); // Debugging line
+            if (input === "I Love You") {
+                window.location.href = 'susmi.html'; // Redirect to the target page
+            } else {
+                document.getElementById('password').value = '';
+                alert('Incorrect password. Please try again.');
+            }
+        });
+    </script>
+</body>
+
+</html>

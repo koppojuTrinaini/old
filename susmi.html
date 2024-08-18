@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Susmitha</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lobster&display=swap');
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            overflow: auto;
+            /* background: #fffae3; */
+        }
+
+        .video-background {
+            position: fixed;
+            /* Ensures the video stays in place */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensures the video covers the entire area */
+            z-index: -1;
+            /* Places the video behind other content */
+            filter: brightness(80%);
+            /* Adjusts the brightness for better contrast */
+            overflow: hidden;
+            /* Prevents overflow */
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 40px;
+            text-align: center;
+            color: #c32d2d;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 48px;
+            color: #000000;
+            font-family: 'Lobster', cursive;
+            text-shadow: 0 0 10px rgba(110, 241, 243, 0.8);
+        }
+
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        table {
+            background-color: rgba(255, 255, 255, 0);
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgb(15, 231, 227);
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: left;
+            font-size: 20px;
+            color: #fff9f9;
+            width: 25%;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        th {
+            font-size: 18px;
+        }
+
+        .img {
+            /* width: 100px; */
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .img1 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+            display: block;
+        }
+
+        .calendar-table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #fff;
+            margin-top: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar-table th,
+        .calendar-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            width: 14.285%;
+            color: #333;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .calendar-table th {
+            background: linear-gradient(135deg, #ffdf46, #ff94c2, #c7e2a3, #dd7ed9);
+            color: white;
+            font-weight: bold;
+        }
+
+        .calendar-table .header {
+            font-size: 24px;
+            padding: 10px;
+            background: linear-gradient(135deg, #ffdf46, #ff94c2, #c7e2a3, #dd7ed9);
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .empty-cell {
+            background-color: #f4f4f4;
+        }
+
+        /* Confetti Animation */
+        @keyframes confetti {
+            0% {
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(200vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 20px;
+            height: 10px;
+            background: radial-gradient(circle, #ffdf46 50%, transparent 1000%);
+            animation: confetti 6s infinite ease-in-out;
+        }
+
+        .confetti-piece:nth-child(odd) {
+            background: radial-gradient(circle, #ff94c2 30%, transparent 50%);
+        }
+
+        .play-button {
+            background-color: #4CAF50;
+            /* Green background */
+            border: none;
+            /* Remove borders */
+            color: white;
+            /* White text */
+            padding: 15px 32px;
+            /* Some padding */
+            text-align: center;
+            /* Centered text */
+            text-decoration: none;
+            /* Remove underline */
+            display: inline-block;
+            /* Make the button inline */
+            font-size: 16px;
+            /* Increase font size */
+            margin: 4px 2px;
+            /* Some margin */
+            cursor: pointer;
+            /* Pointer/hand icon */
+            border-radius: 12px;
+            /* Rounded corners */
+            transition: background-color 0.3s ease;
+            /* Smooth transition */
+        }
+
+        .play-button:hover {
+            background-color: #45a049;
+            /* Darker green on hover */
+        }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .confetti-piece {
+                width: 8px;
+                height: 8px;
+            }
+
+            .img1 {
+                width: 150px;
+                height: 150px;
+            }
+
+            .img {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            table {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            th,
+            td {
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .calendar-table th {
+                font-size: 18px;
+            }
+
+            .calendar-table td {
+                font-size: 14px;
+            }
+        }
+
+        /* Ensure images are responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Video -->
+    <video class="video-background" autoplay loop muted>
+        <source src="https://videos.pexels.com/video-files/1409899/1409899-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Confetti Animation -->
+    <div class="confetti">
+        <div class="confetti-piece" style="left: 20%; animation-duration: 4s;"></div>
+        <div class="confetti-piece" style="left: 40%; animation-duration: 6s;"></div>
+        <div class="confetti-piece" style="left: 60%; animation-duration: 7s;"></div>
+        <div class="confetti-piece" style="left: 80%; animation-duration: 3s;"></div>
+        <!-- More confetti pieces can be added -->
+    </div>
+
+    <!-- Content Overlay -->
+    <div class="content">
+        <h1>Happy Birthday Susmitha <img class="img1" src="s2.jpg" alt="Susmitha Image"></h1>
+        <table>
+            <tr>
+                <th><img src="s1.jpg" alt="Apple Image" width="400px" /></th>
+                <td>
+                    <!-- Calendar Table -->
+                    <table class="calendar-table">
+                        <tr>
+                            <th colspan="7" class="header">August 2024</th>
+                        </tr>
+                        <tr>
+                            <th>Sun</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                        </tr>
+                        <tr>
+                            <td class="empty-cell"></td>
+                            <td class="empty-cell"></td>
+                            <td class="empty-cell"></td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>16</td>
+                            <td>17</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>19</td>
+                            <td>20</td>
+                            <td>21<br><img src="cake.png" width="30px" /></td>
+                            <td>22</td>
+                            <td>23</td>
+                            <td>24</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>26</td>
+                            <td>27</td>
+                            <td>28</td>
+                            <td>29</td>
+                            <td>30</td>
+                            <td>31</td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Susmitha, you’re like a chocolate enthusiast on a never-ending quest for the perfect cocoa treasure!
+                    🍫 If there was an Olympics for chocolate eating, you’d not only win gold but probably eat the medal
+                    too—just to make sure it’s made of real chocolate. 🏅😋 We all know that you have a secret chocolate
+                    stash hidden somewhere, and if anyone dares to find it, they might just be met with a
+                    chocolate-loving ninja ready to defend her sweet kingdom. 🥷🍫👑 Keep being the fabulous chocolate
+                    queen that you are, and remember, there’s no such thing as too much chocolate—only not enough room
+                    for more! 🍫✨
+                </td>
+                <th><img class="img" src="pngegg (1).jpg" alt="Image 1" /></th>
+            </tr>
+            <tr>
+                <th><img class="img" src="s3.jpg" alt="Image 2" /></th>
+                <td>"Susmitha, you are like a human embodiment of chocolate—sweet, irresistible, and just a little bit
+                    addictive! 🍫 Every time Samantha appears on screen, I can almost hear you cheering like you just
+                    won a lifetime supply of your favorite treat! 😄 I bet if there were a quiz on Samantha trivia,
+                    you'd ace it faster than anyone could say 'Samantha’s biggest fan'! 🌟 If there’s ever a national
+                    holiday for Samantha appreciation, I’m sure you'd be the one leading the parade, waving a giant flag
+                    with her face on it! 🏳️ You’d probably even convince the chocolate companies to make special
+                    edition Samantha-themed chocolates, just so you could combine your two great loves! 🍬 So here’s to
+                    you, the queen of chocolate and the ultimate Samantha fan—keep shining, keep smiling, and keep
+                    spreading that sweet fandom energy! 😁🍫🎉"</td>
+                <!-- Decorated Play Button -->
+                <button onclick="playSong()" class="play-button">🎵 Play Song</button>
+
+                <!-- Audio Element -->
+                <audio id="song" src="The Karma Theme - SenSongsMp3.Co.mp3"></audio>
+            </tr>
+            <tr>
+                <td>🌸 Hey Susmitha! You’re like the perfect blend of tradition and beauty, as if a goddess from ancient
+                    times decided to step into the 21st century with grace and style! 👗✨ Your devotion is so strong, I
+                    bet even the gods are like, “Whoa, Susmitha, slow down, you’re making us look bad!” 😇📿 Your beauty
+                    isn’t just on the outside; it’s in the way you carry your traditions, respect your roots, and light
+                    up every room you walk into. 🌟💫 Keep spreading those positive vibes, and remember, with great
+                    beauty comes great responsibility – like dazzling us all, every single day! 😄🌼</td>
+                <th><img class="img" src="s4.jpg" alt="Image 3" width="300px" /></th>
+            </tr>
+            <tr>
+                <th><img src="s5.jpg" width="300px" /></th>
+                <td>"Susmitha, I have to say, you look absolutely breathtaking in that modern dress—it’s like you’ve
+                    stepped straight out of a fashion dream! 😍 The way you carry yourself with such elegance and grace
+                    is truly remarkable. If I were born as a boy, I’d be organizing the most romantic proposal, complete
+                    with fireworks and a grand celebration, just to have the chance to spend my life with someone as
+                    incredible as you! 💍🌟 Your style, beauty, and charisma are simply unmatched, and you make every
+                    outfit look like a masterpiece. Keep shining bright and turning heads wherever you go! ✨👗💃💖"</td>
+            </tr>
+            <tr>
+                <td>"Susmitha’s life is a comedy show starring her fantastic friends: Raji, who’s forever battling
+                    code bugs like a superhero with a keyboard 🦸‍♂️💻, Trinaini, the snack sorceress who can turn a
+                    boring
+                    day into a feast 🍔✨, Ammulu, the nap ninja who can snooze through anything and still look fabulous
+                    😴💤, Yoshitha, our meme maestro who’s always ready with the perfect reaction gif 😂🎉, Sujatha, the
+                    guru of life hacks who somehow makes everything look easy 🧙‍♀️🔧, Shannu, the drama queen who could
+                    turn a sneeze into an epic saga 😱🎭, and Jyosthna, the dance sensation who busts moves like she’s
+                    on a secret mission from the groove gods 🕺💃—together, they prove that life’s not just an
+                    adventure, it’s a full-on comedy extravaganza! 🌈🌟"</td>
+                <th><img src="s7.jpg" width="600px" /></th>
+            </tr>
+        </table>
+        <h1>Thanks for being my Friend✨🌈</h1>
+    </div>
+    <script>
+        function playSong() {
+            var audio = document.getElementById("song");
+            audio.play();
+        }
+    </script>
+</body>
+
+</html>
